@@ -7,9 +7,7 @@ Route::get('/', function () {
 
 Route::get('/about', function ()
 {
-	return '<h1> Hello</h1>'
-	.'Selamat datang diwebapp saya</br>'
-	.'Laravel, emang keren.';
+	return view('about');
 });
 
 Route::get('/latihan', function ()
@@ -45,4 +43,55 @@ Route::get('/about/hendri', function()
 {
 	$a=' Asep';
 	return "Ini Halaman About" . $a;
+});
+
+
+Route::get('testmodel', function()
+{
+	$a= App\Post::all();
+	return $a;
+});
+
+Route::get('asik', function()
+{
+	$a= App\Post::find(1);
+	return $a;
+});
+
+Route::get('aweu', function()
+{
+	$a= App\Post::where('title','like','%cepat nikah%')->get();
+	return $a;
+});
+
+
+Route::get('asdf', function()
+{
+	$a= App\Post::find(1);
+	$a->title="Ciri Keluarga Sakinah";
+	$a->save();
+	return $a;
+});
+
+Route::get('get', function()
+{
+	$a= App\Post::find(1);
+	$a->delete();
+});
+
+Route::get('qwerty', function()
+{
+	$s= new App\Post;
+	$s->title="Jodoh Warisan Bapak";
+	$s->content="Jodoh Pengantar Jenazah";
+	$s->save();
+	return $s;
+});
+
+
+
+
+Route::get('/mastah', function ()
+{
+	return view('layouts.master');
 });
